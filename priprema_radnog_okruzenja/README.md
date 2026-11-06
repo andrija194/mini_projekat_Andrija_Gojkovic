@@ -3,7 +3,6 @@
 
 **Predmet:** Napredno programiranje  
 **Student:** Andrija Gojković  
-**Univerzitet:** Univerzitet Donja Gorica (UDG)  
 **Tehnologije:** Python 3.15.2, Visual Studio Code, Git, GitHub, pytest, Ruff
 
 ## 1. Opis projekta
