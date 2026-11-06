@@ -1,29 +1,24 @@
+
 # Priprema radnog okruženja
 
 **Predmet:** Napredno programiranje  
-**Student:** Andrija Gojković    
-**Tehnologije:** Python 3.15.2, Visual Studio Code, GitHub, pytest, Ruff
+**Student:** Andrija Gojković  
+**Univerzitet:** Univerzitet Donja Gorica (UDG)  
+**Tehnologije:** Python 3.15.2, Visual Studio Code, Git, GitHub, pytest, Ruff
 
-## 1. Opis zadatka
+## 1. Opis projekta
 
-Cilj ovog domaćeg zadatka je priprema radnog okruženja za razvoj Python aplikacija, upoznavanje sa alatima za testiranje i provjeru kvaliteta koda, kao i korišćenje AI asistenta pri implementaciji jednostavne funkcije.
+U okviru ovog zadatka pripremljeno je radno okruženje za razvoj i testiranje Python programa.
 
-U okviru zadatka korišćeni su:
+Za pisanje i pokretanje koda korišćen je Visual Studio Code, dok su za provjeru ispravnosti i kvaliteta koda korišćeni pytest i Ruff. Projekat je postavljen na GitHub radi čuvanja i praćenja izmjena.
 
-- **Python** – programski jezik za implementaciju funkcije.
-- **Visual Studio Code** – razvojno okruženje za pisanje i pokretanje koda.
-- **Git i GitHub** – verzionisanje i čuvanje projekta.
-- **pytest** – automatsko testiranje funkcionalnosti.
-- **Ruff** – provjera kvaliteta i formatiranja Python koda.
-- **ChatGPT** – pomoć pri implementaciji, testiranju i dokumentovanju.
+Uz pomoć ChatGPT-a implementirana je funkcija `prosjecna_cijena`, koja računa aritmetičku sredinu cijena iz zadate liste.
 
 ## 2. Implementacija funkcije
 
-Uz pomoć AI asistenta implementirana je funkcija `prosjecna_cijena(cijene)`.
+Funkcija `prosjecna_cijena(cijene)` prima listu numeričkih vrijednosti i vraća njihov prosjek.
 
-Funkcija prima listu cijena i računa njihov aritmetički prosjek.
-
-Primjer:
+Primjer korišćenja:
 
 ```python
 cijene = [10, 20, 30]
@@ -37,17 +32,15 @@ Rezultat:
 20.0
 ```
 
-Prosječna cijena računa se tako što se zbir svih cijena podijeli brojem elemenata u listi.
-
-Pored osnovnog izračunavanja, dodate su provjere ulaznih podataka:
+Pored osnovnog izračunavanja, funkcija provjerava ispravnost ulaznih podataka:
 
 - Lista ne smije biti prazna.
-- Cijene moraju biti numeričke vrijednosti.
+- Sve cijene moraju biti numeričke vrijednosti.
 - Negativne cijene nijesu dozvoljene.
 - Vrijednosti `nan` i `inf` nijesu dozvoljene.
-- Logičke vrijednosti (`True` i `False`) ne prihvataju se kao cijene.
+- Logičke vrijednosti `True` i `False` ne prihvataju se kao cijene.
 
-Ako je lista prazna ili sadrži nedozvoljenu numeričku vrijednost, funkcija prijavljuje `ValueError`. Za neodgovarajući tip podatka prijavljuje `TypeError`.
+Za neispravne vrijednosti funkcija prijavljuje odgovarajuću grešku (`ValueError` ili `TypeError`).
 
 ## 3. Struktura projekta
 
@@ -65,15 +58,16 @@ priprema_radnog_okruzenja/
     └── test_prosjecna_cijena.py
 ```
 
-Datoteka `prosjecna_cijena.py` sadrži implementaciju funkcije, dok `test_prosjecna_cijena.py` sadrži automatske testove.
+- `prosjecna_cijena.py` – implementacija funkcije.
+- `tests/test_prosjecna_cijena.py` – automatski testovi.
+- `requirements.txt` – potrebne biblioteke.
+- `pytest.ini` – podešavanja za pytest.
+- `ruff.toml` – podešavanja za Ruff.
+- `README.md` – dokumentacija projekta.
 
-Datoteka `requirements.txt` definiše potrebne biblioteke, a `ruff.toml` podešavanja za provjeru kvaliteta koda.
+## 4. Pokretanje programa
 
-## 4. Pokretanje projekta
-
-Projekat je pokrenut u Visual Studio Code-u na Windows operativnom sistemu.
-
-Potrebno je instalirati biblioteke:
+Za instalaciju potrebnih biblioteka koristi se:
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -85,13 +79,13 @@ Pokretanje programa:
 python prosjecna_cijena.py
 ```
 
-Rezultat za primjer iz programa:
+Rezultat izvršavanja:
 
 ```text
 Prosječna cijena: 20.00 EUR
 ```
 
-Pokretanje automatskih testova:
+Pokretanje testova:
 
 ```powershell
 python -m pytest -v
@@ -109,51 +103,39 @@ Provjera formatiranja:
 python -m ruff format --check .
 ```
 
-Na mom računaru korišćeno je Python virtuelno okruženje `.venv`, jer komanda `python` u početku nije bila dostupna direktno iz Windows terminala.
-
 ## 5. Testiranje
 
-Za testiranje funkcije korišćena je biblioteka `pytest`.
+Za testiranje je korišćen pytest. Napisano je pet testova koji provjeravaju:
 
-Implementirano je pet testova:
+1. Izračunavanje prosjeka više cijena.
+2. Izračunavanje prosjeka jedne cijene.
+3. Ponašanje funkcije kada je lista prazna.
+4. Obradu negativnih cijena.
+5. Obradu nekonačnih numeričkih vrijednosti.
 
-| Test | Šta provjerava |
-|---|---|
-| `test_prosjecna_cijena_vise_vrijednosti` | Ispravan prosjek više cijena |
-| `test_prosjecna_cijena_jedna_vrijednost` | Prosjek liste sa jednom cijenom |
-| `test_prazna_lista` | Odbijanje prazne liste |
-| `test_negativna_cijena` | Odbijanje negativnih cijena |
-| `test_nekonacna_cijena` | Odbijanje vrijednosti `nan` |
-
-### 5.1. Rezultati pytest testiranja
-
-Testovi su pokrenuti u VS Code terminalu.
-
-Dobijeni rezultat:
+Nakon pokretanja testova dobijen je rezultat:
 
 ```text
 5 passed in 0.17s
 ```
 
-Svih pet testova uspješno je prošlo, bez prijavljenih grešaka.
+Svih pet testova uspješno je prošlo.
 
-### 5.2. Provjera Ruff alatom
+### Provjera Ruff alatom
 
-Ruff je korišćen za provjeru potencijalnih grešaka, stila i formatiranja koda.
-
-Nakon instalacije pokrenuta je komanda:
+Za provjeru kvaliteta koda pokrenuta je komanda:
 
 ```powershell
 python -m ruff check .
 ```
 
-Dobijeni rezultat:
+Rezultat:
 
 ```text
 All checks passed!
 ```
 
-Zatim je provjereno formatiranje:
+Provjera formatiranja:
 
 ```powershell
 python -m ruff format --check .
@@ -165,103 +147,89 @@ Rezultat:
 3 files already formatted
 ```
 
-Ovi rezultati potvrđuju da je kod prošao podešene Ruff provjere.
-
 ## 6. Korišćenje AI asistenta
 
-Tokom izrade domaćeg zadatka koristio sam ChatGPT kao pomoć pri implementaciji funkcije, pisanju testova, objašnjenju grešaka i pripremi dokumentacije.
+Tokom rada korišćen je ChatGPT za pomoć pri implementaciji funkcije, pisanju testova, rješavanju problema tokom pokretanja i pripremi dokumentacije.
 
-### 6.1. Upotrijebljeni upiti
+### 6.1. Korišćeni upiti
 
-**Upit 1 – Izrada domaćeg zadatka**
-
-Dostavio sam fotografiju zadatka „Priprema radnog okruženja“ i napisao:
+**Upit 1:**
 
 > Hajde ovaj projekat da odradimo zasebno
 
-Cilj je bio da se implementira poseban domaći zadatak sa funkcijom `prosjecna_cijena`, testovima i potrebnim podešavanjima.
+Uz upit je dostavljena fotografija zadatka. Na osnovu nje pripremljena je Python funkcija za računanje prosječne cijene, zajedno sa testovima i konfiguracijom potrebnih alata.
 
-**Upit 2 – Pojašnjenje zahtjeva**
+**Upit 2:**
 
 > Ovo je skroz drugi domaci znaci radimo ga tako i upoldujemo kao sto kaze
 
-Ovim zahtjevom naglasio sam da domaći treba organizovati odvojeno od prethodnog projekta, uz poštovanje profesorovog uputstva o korišćenju istog GitHub repozitorijuma.
+Ovim upitom dodatno je pojašnjena organizacija projekta. Datoteke su smještene u poseban folder unutar postojećeg GitHub repozitorijuma.
 
-**Upit 3 – Provjera rada programa**
+**Upit 3:**
 
 > kako da viidm da li sve radi
 
-Tražio sam objašnjenje kako da pokrenem funkciju, pytest testove i Ruff provjere.
+Zatraženo je objašnjenje pokretanja Python programa, pytest testova i Ruff provjera u VS Code-u.
 
-**Upit 4 – Poboljšanje dokumentacije**
+**Upit 4:**
 
 > hajde mi readme poboljsaj za profesora
 
-Zatražio sam doradu dokumentacije kako bi jasnije prikazivala implementaciju, upotrebu AI-ja, uočene nedostatke i rezultate testiranja.
+Zatražena je pomoć pri sređivanju dokumentacije i opisivanju korišćenih AI upita, nedostataka i izvršenih provjera.
 
-### 6.2. Uočeni nedostaci i ispravke generisanog rješenja
+### 6.2. Uočeni nedostaci i poboljšanja
 
-Prilikom razmatranja početnog pristupa identifikovani su slučajevi koje jednostavna implementacija prosjeka ne obrađuje pravilno.
+Prilikom analize jednostavnog načina izračunavanja prosjeka uočeno je nekoliko mogućih problema.
 
-| Nedostatak početnog pristupa | Predložena ispravka |
+| Uočeni nedostatak | Poboljšanje |
 |---|---|
-| Prazna lista izaziva dijeljenje nulom | Dodata provjera prazne liste i `ValueError` |
-| Negativne cijene se prihvataju bez provjere | Dodata provjera nenegativnosti |
-| Vrijednosti `nan` i `inf` mogu dati neispravan rezultat | Dodata provjera konačnosti cijena |
-| Neodgovarajući tipovi nijesu jasno obrađeni | Dodata provjera tipova i `TypeError` |
-| Osnovni primjer ne provjerava granične slučajeve | Dodato pet pytest testova |
+| Prazna lista može izazvati dijeljenje nulom. | Dodata provjera prazne liste. |
+| Negativne cijene mogu biti prihvaćene kao ispravne. | Dodata provjera negativnih vrijednosti. |
+| Vrijednosti `nan` i `inf` mogu dovesti do neispravnog rezultata. | Dodata provjera konačnosti brojeva. |
+| Neodgovarajući tip podataka može izazvati nejasnu grešku. | Dodata provjera tipova podataka. |
+| Samo jedan primjer nije dovoljan za provjeru funkcionalnosti. | Napisano pet pytest testova. |
 
-Navedene provjere i dorade predložene su uz pomoć AI asistenta. Nijesu sve nastale kao greške tokom izvršavanja programa, već su dio poboljšanja početnog pristupa.
+Navedeni problemi predstavljaju nedostatke jednostavnog pristupa računanju prosjeka. Provjere su uključene u rješenje pripremljeno uz pomoć AI asistenta.
 
-### 6.3. Problemi prilikom pokretanja
+### 6.3. Problemi tokom pokretanja
 
-Prilikom pokretanja projekta pojavio se problem jer Windows terminal nije prepoznavao komandu `python`.
+Prilikom prvog pokretanja Python programa terminal nije prepoznavao komandu `python`.
 
 Problem je riješen korišćenjem Python interpretera iz virtuelnog okruženja `.venv`.
 
-Nakon toga program je uspješno pokrenut i prikazao očekivanu prosječnu cijenu od 20 EUR.
-
-Prilikom prve Ruff provjere pojavila se poruka:
+Tokom pokretanja Ruff-a pojavila se greška:
 
 ```text
 No module named ruff
 ```
 
-Uz pomoć AI asistenta instalirao sam nedostajuću biblioteku, nakon čega su Ruff provjere uspješno prošle.
+Nakon instalacije biblioteke Ruff, provjera koda je uspješno izvršena.
 
-Tokom unošenja komandi pojavile su se i greške zbog dodatnih znakova u terminalu. Nakon ispravke komandi program i alati izvršavali su se normalno.
+Takođe, prilikom unošenja pojedinih komandi pojavile su se greške zbog pogrešno unesenih znakova. Nakon ispravke komandi program i testovi su uspješno pokrenuti.
 
-### 6.4. Samostalna provjera
+### 6.4. Provjera rješenja
 
-Nakon generisanja projekta samostalno sam u VS Code-u:
+Nakon pripreme projekta izvršene su sljedeće provjere:
 
-1. Pokrenuo funkciju `prosjecna_cijena`.
-2. Provjerio rezultat izračunavanja.
-3. Pokrenuo svih pet pytest testova.
-4. Instalirao Ruff i izvršio provjeru kvaliteta koda.
-5. Izvršio provjeru formatiranja.
-6. Postavio projekat na GitHub koristeći Git komande.
+- Pokrenut je program `prosjecna_cijena.py`.
+- Provjeren je rezultat izračunavanja prosječne cijene.
+- Pokrenuto je pet pytest testova.
+- Izvršena je Ruff provjera kvaliteta koda.
+- Provjereno je formatiranje Python datoteka.
+- Projekat je postavljen na GitHub.
 
-Svi navedeni koraci uspješno su završeni.
+Program je prikazao očekivani rezultat, svih pet testova je prošlo, a Ruff nije prijavio probleme.
 
-## 7. GitHub repozitorijum
+## 7. Zaključak
 
-Projekat je postavljen na GitHub:
+Kroz ovaj zadatak pripremljeno je radno okruženje za razvoj Python programa i korišćenje osnovnih alata za testiranje i provjeru kvaliteta koda.
+
+Implementirana je funkcija za računanje prosječne cijene, uz dodatne provjere ulaznih podataka.
+
+Korišćenje AI asistenta pomoglo je pri izradi funkcije i testova, dok je ispravnost provjerena njihovim pokretanjem u Visual Studio Code-u.
+
+## 8. GitHub repozitorijum
 
 https://github.com/andrija194/mini_projekat_Andrija_Gojkovic
 
-Prema uputstvu profesora, isti GitHub repozitorijum koristi se za sve mini projekte i završni projekat.
-
-Ovaj domaći nalazi se u posebnom folderu `priprema_radnog_okruzenja`, kako bi bio jasno odvojen od ostalih zadataka.
-
-## 8. Zaključak
-
-Kroz ovaj domaći zadatak pripremio sam radno okruženje za razvoj Python aplikacija i upoznao se sa osnovnim alatima za kontrolu kvaliteta koda.
-
-Implementirana je funkcija `prosjecna_cijena`, uz provjeru ispravnosti ulaznih podataka i automatsko testiranje.
-
-Svih pet pytest testova uspješno je prošlo, a Ruff nije prijavio probleme sa kvalitetom i formatiranjem koda prema korišćenim podešavanjima.
-
-Korišćenje AI asistenta pomoglo mi je pri pisanju i poboljšanju rješenja, dok sam ispravnost provjerio pokretanjem programa i odgovarajućih alata.
-
-Zadatak predstavlja osnovu za naredne mini projekte iz predmeta Napredno programiranje.
+Datoteke ovog zadatka nalaze se u folderu `priprema_radnog_okruzenja`.
