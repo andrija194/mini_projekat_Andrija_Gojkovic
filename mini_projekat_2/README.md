@@ -147,4 +147,8 @@ Svih 14 testnih slučajeva prošlo je i u pripremi i na lokalnom računaru stude
 
 ## Upotreba AI alata
 
-ChatGPT je korišćen za generisanje većine Python koda, testova, dokumentacije i dijagrama, kao i za pomoć u podešavanju lokalnog okruženja. Zahtjev je bio izrada jednostavnog ML okvira sa pet obrazaca dizajna, Iris primjerom i najmanje pet pytest testova. Program i testovi pokrenuti su u pripremi projekta, a potom uspješno i na lokalnom računaru studenta.
+Tokom izrade projekta koristio sam ChatGPT kao pomoć pri organizaciji projekta, primjeni obrazaca dizajna i generisanju koda, pytest testova, dokumentacije i dijagrama klasa.
+
+Kroz dodatna pitanja razjašnjavao sam uloge klasa i način pokretanja programa. ChatGPT sam koristio i za pomoć pri rješavanju problema sa Python okruženjem i bibliotekama.
+
+Projekat sam pokrenuo na svom računaru i provjerio izvršavanje programa. Pokrenuo sam i automatske testove, pri čemu je svih 14 testnih slučajeva uspješno prošlo.
